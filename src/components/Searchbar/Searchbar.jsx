@@ -1,20 +1,18 @@
-import { useState } from 'react';
-import { searchMovies } from 'services/API';
+import PropTypes from 'prop-types';
 import { WrapperForm, StyledInput, StyledButton } from './searchbar.styled';
-import { useSearchParams } from 'react-router-dom';
 
-function Searchbar({ setSearchArr, setSearchParams, handleSubmit }) {
-  const handleChange = evt => {
-    setSearchParams({ query: evt.target.value });
-  };
-  //   const filterText = searchParams.get('query') ?? '';
-  //   console.log(searchParams.get('query'));
-
+function Searchbar({ handleSubmit, onChange, value }) {
   return (
     <WrapperForm onSubmit={evt => handleSubmit(evt)}>
-      <StyledInput type="text" onChange={handleChange} />
+      <StyledInput type="text" onChange={evt => onChange(evt.target.value)} />
       <StyledButton type="submit">Search</StyledButton>
     </WrapperForm>
   );
 }
 export default Searchbar;
+
+Searchbar.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+};

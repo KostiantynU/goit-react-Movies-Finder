@@ -11,7 +11,7 @@ function MainPage() {
   }, []);
   return (
     <>
-      <h1>Trending today</h1>
+      <h1 style={{ marginBottom: '15px' }}>Trending today</h1>
       <ListOfFilms arrayFilms={arrayFilms} />
     </>
   );

@@ -10,31 +10,36 @@ function MoviesSearch() {
   const [searchArr, setSearchArr] = useState([]);
 
   const filterText = searchParams.get('query') ?? '';
-  // useEffect(() => {
-  //   searchMovies(searchParams.get(filterText)).then(response =>
-  //     setSearchArr([...response.results])
-  //   );
-  // }, []);
+
+  useEffect(() => {
+    if (filterText) {
+      searchMovies(filterText).then(response => setSearchArr([...response.results]));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const updateQueryString = query => {
+    const nextParams = query !== '' ? { query } : {};
+    setSearchParams(nextParams);
+  };
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    searchMovies(searchParams.get('query')).then(response => setSearchArr([...response.results]));
+    searchMovies(filterText).then(response => setSearchArr([...response.results]));
     evt.target.reset();
+    // updateQueryString('');
   };
-  const filteredArr = searchArr.filter(el =>
-    el.original_title.toLowerCase().includes(filterText.trim().toLowerCase())
-  );
-  console.log(searchArr);
-  console.log(filteredArr);
+
+  // const filteredArr = searchArr.filter(el =>
+  //   el.original_title.toLowerCase().includes(filterText.trim().toLowerCase())
+  // );
+  // console.log(filteredArr);
+  // console.log(searchArr);
   return (
     <div>
       <MainTitle>Movie search</MainTitle>
-      <Searchbar
-        setSearchArr={setSearchArr}
-        setSearchParams={setSearchParams}
-        handleSubmit={handleSubmit}
-      />
-      <ListOfFilms arrayFilms={filteredArr} />
+      <Searchbar handleSubmit={handleSubmit} onChange={updateQueryString} value={filterText} />
+      <ListOfFilms arrayFilms={searchArr} />
     </div>
   );
 }

@@ -1,11 +1,15 @@
 import PropTypes from 'prop-types';
 import { ListOfFilmItem } from './ListOfFilmsItem.styled';
 import { StyledLinkForItem } from './ListOfFilmsItem.styled';
+import { useLocation } from 'react-router-dom';
 
 function ListOfFilmsItem({ originalTitle, movieId }) {
+  const location = useLocation();
   return (
     <ListOfFilmItem>
-      <StyledLinkForItem to={`/moviepage/${movieId}`}>{originalTitle}</StyledLinkForItem>
+      <StyledLinkForItem to={`/moviepage/${movieId}`} state={{ from: location }}>
+        {originalTitle}
+      </StyledLinkForItem>
     </ListOfFilmItem>
   );
 }

@@ -35,3 +35,12 @@ export const ListLinksStyled = styled.ul`
   margin-bottom: 15px;
   margin-left: 20px;
 `;
+export const StyledGoBackBtn = styled(Link)`
+  padding: 10px 15px;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  background-color: rgb(73, 203, 230);
+`;

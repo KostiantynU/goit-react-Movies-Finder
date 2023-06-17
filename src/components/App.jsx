@@ -1,10 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import { lazy } from 'react';
 import SharedLayout from './SharedLayout/SharedLayout';
-// import MainPage from 'pages/MainPage';
-// import MoviesSearch from 'pages/MoviesSearch';
-// import NotFound from 'pages/NotFound';
-// import MovieCard from './MovieCard/MovieCard';
 
 const MainPage = lazy(() => import('pages/MainPage'));
 const MoviesSearch = lazy(() => import('pages/MoviesSearch'));

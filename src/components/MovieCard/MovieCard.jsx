@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import { useParams, Outlet, useLocation } from 'react-router-dom';
 import { Watch } from 'react-loader-spinner';
 import { IMAGE_PATH } from '../../services/API';
@@ -13,7 +13,7 @@ import {
   StyledDiv,
   StyledGoBackBtn,
 } from './MovieCard.styled';
-// import notFoundImg from '../../images/395x574-no-image.jpg';
+import { LoadingNotFoundStyled, TiteLoadingNotFound } from 'pages/LoadingNotFound.Styled';
 
 function MovieCard() {
   const [stateObj, setStateObj] = useState({});
@@ -52,7 +52,7 @@ function MovieCard() {
     />
   );
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/';
+  const backLinkHref = useRef(location.state?.from ?? '/');
 
   return (
     <>
@@ -60,7 +60,7 @@ function MovieCard() {
         watchSmall()
       ) : (
         <>
-          <StyledGoBackBtn to={backLinkHref}>Go back</StyledGoBackBtn>
+          <StyledGoBackBtn to={backLinkHref.current}>Go back</StyledGoBackBtn>
           <MovieWrapper>
             {stateObj.poster_path ? (
               <img src={`${IMAGE_PATH}${stateObj.poster_path}`} alt="" />
@@ -76,20 +76,28 @@ function MovieCard() {
               <p>{stateObj.genres?.map(el => `${el.name}${' '} `)}</p>
             </DescriptionWrapper>
           </MovieWrapper>
+          <StyledDiv>
+            Additional information
+            <ListLinksStyled>
+              <li>
+                <StyledLink to="cast">Cast</StyledLink>
+              </li>
+              <li>
+                <StyledLink to="reviews">Reviews</StyledLink>
+              </li>
+            </ListLinksStyled>
+          </StyledDiv>
         </>
       )}
-      <StyledDiv>
-        Additional information
-        <ListLinksStyled>
-          <li>
-            <StyledLink to="cast">Cast</StyledLink>
-          </li>
-          <li>
-            <StyledLink to="reviews">Reviews</StyledLink>
-          </li>
-        </ListLinksStyled>
-      </StyledDiv>
-      <Outlet />
+      <Suspense
+        fallback={
+          <LoadingNotFoundStyled>
+            <TiteLoadingNotFound>Loading...</TiteLoadingNotFound>
+          </LoadingNotFoundStyled>
+        }
+      >
+        <Outlet />
+      </Suspense>
     </>
   );
 }

@@ -39,7 +39,11 @@ function MoviesSearch() {
     <div>
       <MainTitle>Movie search</MainTitle>
       <Searchbar handleSubmit={handleSubmit} onChange={updateQueryString} value={filterText} />
-      <ListOfFilms arrayFilms={searchArr} />
+      {searchArr.length !== 0 ? (
+        <ListOfFilms arrayFilms={searchArr} />
+      ) : (
+        <p style={{ margin: '0.5em' }}>There are no results or you have not entered anything!</p>
+      )}
     </div>
   );
 }

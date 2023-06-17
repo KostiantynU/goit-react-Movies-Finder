@@ -1,8 +1,8 @@
+import PropTypes from 'prop-types';
 import { ListOfFilm } from './ListOfFilms.styled';
 import ListOfFilmsItem from 'components/ListOfFilmsItem.jsx/ListOfFilmsItem';
 
 function ListOfFilms({ arrayFilms }) {
-  // console.log(arrayFilms);
   return (
     <ListOfFilm>
       {arrayFilms?.map(({ id, original_title }) => (
@@ -16,3 +16,12 @@ function ListOfFilms({ arrayFilms }) {
   );
 }
 export default ListOfFilms;
+
+ListOfFilms.propTypes = {
+  arrayFilms: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      original_title: PropTypes.string.isRequired,
+    })
+  ),
+};

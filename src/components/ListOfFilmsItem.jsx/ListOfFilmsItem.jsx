@@ -7,7 +7,7 @@ function ListOfFilmsItem({ originalTitle, movieId }) {
   const location = useLocation();
   return (
     <ListOfFilmItem>
-      <StyledLinkForItem to={`/moviepage/${movieId}`} state={{ from: location }}>
+      <StyledLinkForItem to={`/moviedetails/${movieId}`} state={{ from: location }}>
         {originalTitle}
       </StyledLinkForItem>
     </ListOfFilmItem>

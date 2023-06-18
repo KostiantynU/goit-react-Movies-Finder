@@ -4,7 +4,7 @@ import { WrapperForm, StyledInput, StyledButton } from './searchbar.styled';
 function Searchbar({ handleSubmit, onChange, value }) {
   return (
     <WrapperForm onSubmit={evt => handleSubmit(evt)}>
-      <StyledInput type="text" name="search" onChange={evt => onChange(evt.target.value)} />
+      <StyledInput type="text" name="search" />
       <StyledButton type="submit">Search</StyledButton>
     </WrapperForm>
   );

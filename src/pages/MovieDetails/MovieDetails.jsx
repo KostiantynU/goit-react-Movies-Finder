@@ -1,6 +1,6 @@
 import { Suspense, useEffect, useRef, useState } from 'react';
 import { useParams, Outlet, useLocation } from 'react-router-dom';
-import { Watch } from 'react-loader-spinner';
+import { WatchBig, WatchSmall } from 'components/MySpinners/WatchBigAndSmall';
 import { IMAGE_PATH } from '../../services/API';
 import { getMovie } from '../../services/API';
 import {
@@ -27,37 +27,13 @@ function MovieCard() {
       .finally(setIsLoader(false));
   }, [movieId]);
 
-  const watchSmall = () => (
-    <Watch
-      height="200"
-      width="200"
-      radius="48"
-      color="rgb(73, 203, 230)"
-      ariaLabel="watch-loading"
-      wrapperStyle={{ justifyContent: 'center' }}
-      wrapperClassName=""
-      visible={true}
-    />
-  );
-  const watchBig = () => (
-    <Watch
-      height="300"
-      width="300"
-      radius="48"
-      color="rgb(73, 203, 230)"
-      ariaLabel="watch-loading"
-      wrapperStyle={{ justifyContent: 'center' }}
-      wrapperClassName=""
-      visible={true}
-    />
-  );
   const location = useLocation();
   const backLinkHref = useRef(location.state?.from ?? '/');
 
   return (
     <>
       {isLoader ? (
-        watchSmall()
+        <WatchSmall />
       ) : (
         <>
           <StyledGoBackBtn to={backLinkHref.current}>Go back</StyledGoBackBtn>
@@ -65,7 +41,7 @@ function MovieCard() {
             {stateObj.poster_path ? (
               <img src={`${IMAGE_PATH}${stateObj.poster_path}`} alt="" />
             ) : (
-              watchBig()
+              <WatchBig />
             )}
             <DescriptionWrapper>
               <h2>{stateObj.original_title}</h2>

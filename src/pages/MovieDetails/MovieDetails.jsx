@@ -1,6 +1,6 @@
 import { Suspense, useEffect, useRef, useState } from 'react';
 import { useParams, Outlet, useLocation } from 'react-router-dom';
-import { watchBig, WatchSmall } from 'components/MySpinners/WatchBigAndSmall';
+import { WatchBig, WatchSmall } from 'components/MySpinners/WatchBigAndSmall';
 import { IMAGE_PATH } from '../../services/API';
 import { getMovie } from '../../services/API';
 import {
@@ -41,7 +41,7 @@ function MovieCard() {
             {stateObj.poster_path ? (
               <img src={`${IMAGE_PATH}${stateObj.poster_path}`} alt="" />
             ) : (
-              watchBig()
+              <WatchBig />
             )}
             <DescriptionWrapper>
               <h2>{stateObj.original_title}</h2>

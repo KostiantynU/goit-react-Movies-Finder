@@ -8,13 +8,17 @@ import { MainTitle } from './MoviesSearch.styled';
 function MoviesSearch() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchArr, setSearchArr] = useState([]);
-
+  const [totalResults, setTotalResults] = useState(1);
   const filterText = searchParams.get('query') ?? '';
 
   useEffect(() => {
     if (!filterText) return;
-    searchMovies(filterText).then(response => setSearchArr([...response.results]));
-  }, [filterText]);
+    searchMovies(filterText).then(response => {
+      setTotalResults(response.total_results);
+      setSearchArr([...response.results]);
+      console.log(totalResults);
+    });
+  }, [filterText, totalResults]);
 
   // const updateQueryString = query => {
   //   const nextParams = query !== '' ? { query } : {};
@@ -39,10 +43,10 @@ function MoviesSearch() {
     <div>
       <MainTitle>Movie search</MainTitle>
       <Searchbar handleSubmit={handleSubmit} value={filterText} />
-      {searchArr.length !== 0 ? (
+      {totalResults !== 0 ? (
         <ListOfFilms arrayFilms={searchArr} />
       ) : (
-        <p style={{ margin: '0.5em' }}>There are no results or you have not entered anything!</p>
+        <p style={{ margin: '0.5em' }}>There are no results!</p>
       )}
     </div>
   );

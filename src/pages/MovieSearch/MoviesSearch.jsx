@@ -16,16 +16,16 @@ function MoviesSearch() {
     searchMovies(filterText).then(response => setSearchArr([...response.results]));
   }, [filterText]);
 
-  const updateQueryString = query => {
-    const nextParams = query !== '' ? { query } : {};
-    setSearchParams(nextParams);
-  };
+  // const updateQueryString = query => {
+  //   const nextParams = query !== '' ? { query } : {};
+  //   setSearchParams(nextParams);
+  // };
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    console.log(evt.target);
-    // searchMovies(filterText).then(response => setSearchArr([...response.results]));
-    setSearchParams({ query: evt.target.elements.search.value });
+    const query = evt.target.elements.search.value;
+    const nextParams = query !== '' ? { query } : {};
+    setSearchParams(nextParams);
     evt.target.reset();
     // updateQueryString('');
   };
@@ -38,7 +38,7 @@ function MoviesSearch() {
   return (
     <div>
       <MainTitle>Movie search</MainTitle>
-      <Searchbar handleSubmit={handleSubmit} onChange={updateQueryString} value={filterText} />
+      <Searchbar handleSubmit={handleSubmit} value={filterText} />
       {searchArr.length !== 0 ? (
         <ListOfFilms arrayFilms={searchArr} />
       ) : (

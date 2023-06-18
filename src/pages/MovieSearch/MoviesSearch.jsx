@@ -37,8 +37,7 @@ function MoviesSearch() {
   // const filteredArr = searchArr.filter(el =>
   //   el.original_title.toLowerCase().includes(filterText.trim().toLowerCase())
   // );
-  // console.log(filteredArr);
-  // console.log(searchArr);
+
   return (
     <div>
       <MainTitle>Movie search</MainTitle>

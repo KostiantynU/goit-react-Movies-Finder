@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { WrapperForm, StyledInput, StyledButton } from './searchbar.styled';
 
-function Searchbar({ handleSubmit, onChange, value }) {
+function Searchbar({ handleSubmit }) {
   return (
     <WrapperForm onSubmit={evt => handleSubmit(evt)}>
       <StyledInput type="text" name="search" />
@@ -13,6 +13,4 @@ export default Searchbar;
 
 Searchbar.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
 };

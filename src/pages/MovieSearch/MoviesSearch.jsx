@@ -12,11 +12,9 @@ function MoviesSearch() {
   const filterText = searchParams.get('query') ?? '';
 
   useEffect(() => {
-    if (filterText) {
-      searchMovies(filterText).then(response => setSearchArr([...response.results]));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    if (!filterText) return;
+    searchMovies(filterText).then(response => setSearchArr([...response.results]));
+  }, [filterText]);
 
   const updateQueryString = query => {
     const nextParams = query !== '' ? { query } : {};
@@ -25,7 +23,9 @@ function MoviesSearch() {
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    searchMovies(filterText).then(response => setSearchArr([...response.results]));
+    console.log(evt.target);
+    // searchMovies(filterText).then(response => setSearchArr([...response.results]));
+    setSearchParams({ query: evt.target.elements.search.value });
     evt.target.reset();
     // updateQueryString('');
   };

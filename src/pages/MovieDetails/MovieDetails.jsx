@@ -13,7 +13,7 @@ import {
   StyledDiv,
   StyledGoBackBtn,
 } from './MovieCard.styled';
-import { LoadingNotFoundStyled, TiteLoadingNotFound } from 'pages/LoadingNotFound.Styled';
+import { LoadingNotFoundStyled, TiteLoadingNotFound } from 'pages/NotFound/LoadingNotFound.Styled';
 
 function MovieCard() {
   const [stateObj, setStateObj] = useState({});

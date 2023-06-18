@@ -2,7 +2,7 @@ import { Outlet, Link } from 'react-router-dom';
 import { Suspense } from 'react';
 import { HandySvg } from 'handy-svg';
 import { Container, StyledNavLink, NavContainer } from './SharedLayout.styled';
-import { LoadingNotFoundStyled, TiteLoadingNotFound } from 'pages/LoadingNotFound.Styled';
+import { LoadingNotFoundStyled, TiteLoadingNotFound } from 'pages/NotFound/LoadingNotFound.Styled';
 import iconSrc from '../../images/tmdb-icon.svg';
 
 function SharedLayout() {

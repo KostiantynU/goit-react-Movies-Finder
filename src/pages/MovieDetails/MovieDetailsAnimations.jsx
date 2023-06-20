@@ -1,18 +1,18 @@
 import styled, { keyframes } from 'styled-components';
-import { rotateInDownLeft, rotateInDownRight } from 'react-animations';
+import { slideInLeft, slideInRight } from 'react-animations';
 
-const rotateInDownLeftAnimation = keyframes`${rotateInDownLeft}`;
-const DivStyledRotateInDownLeft = styled.div`
-  animation: ease 1s ${rotateInDownLeftAnimation};
+const slideInLeftAnimation = keyframes`${slideInLeft}`;
+const DivStyledSlideInLeft = styled.div`
+  animation: ease 1s ${slideInLeftAnimation};
 `;
-export function DivRotateInDownLeft({ children }) {
-  return <DivStyledRotateInDownLeft>{children}</DivStyledRotateInDownLeft>;
+export function DivSlideInLeft({ children }) {
+  return <DivStyledSlideInLeft>{children}</DivStyledSlideInLeft>;
 }
 
-const rotateInDownRightAnimation = keyframes`${rotateInDownRight}`;
-const DivStyledRotateInDownRight = styled.div`
-  animation: ease 1s ${rotateInDownRightAnimation};
+const slideInRightAnimation = keyframes`${slideInRight}`;
+const DivStyledSlideInRight = styled.div`
+  animation: ease 1s ${slideInRightAnimation};
 `;
-export function DivRotateInDownRight({ children }) {
-  return <DivStyledRotateInDownRight>{children}</DivStyledRotateInDownRight>;
+export function DivSlideInRight({ children }) {
+  return <DivStyledSlideInRight>{children}</DivStyledSlideInRight>;
 }

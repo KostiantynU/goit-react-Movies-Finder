@@ -4,6 +4,7 @@ import { getCredits } from 'services/API';
 import { Watch } from 'react-loader-spinner';
 import CastListItem from 'components/CastListItem/CastListItem';
 import { CastList } from './Cast.styled';
+import { DivRotateInDownLeft } from 'pages/MovieDetails/MovieDetailsAnimations';
 
 function Cast() {
   const [creditArr, setCreditArr] = useState();
@@ -31,18 +32,20 @@ function Cast() {
         />
       )}
       {creditArr?.length > 0 ? (
-        <CastList>
-          {creditArr.map(
-            ({ credit_id, character, name: characterName, profile_path: charachterPhoto }) => (
-              <CastListItem
-                key={credit_id}
-                character={character}
-                characterName={characterName}
-                charachterPhoto={charachterPhoto}
-              ></CastListItem>
-            )
-          )}
-        </CastList>
+        <DivRotateInDownLeft>
+          <CastList>
+            {creditArr.map(
+              ({ credit_id, character, name: characterName, profile_path: charachterPhoto }) => (
+                <CastListItem
+                  key={credit_id}
+                  character={character}
+                  characterName={characterName}
+                  charachterPhoto={charachterPhoto}
+                ></CastListItem>
+              )
+            )}
+          </CastList>
+        </DivRotateInDownLeft>
       ) : (
         <div>Information does not exists.</div>
       )}

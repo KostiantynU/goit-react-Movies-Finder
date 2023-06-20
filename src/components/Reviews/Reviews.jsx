@@ -4,6 +4,7 @@ import { getReview } from 'services/API';
 import { Watch } from 'react-loader-spinner';
 import { ReviewStyledList } from './Review.styled';
 import ReviewItem from 'components/ReviewItem/ReviewItem';
+import { DivRotateInDownRight } from 'pages/MovieDetails/MovieDetailsAnimations';
 
 function Reviews() {
   const [review, setReview] = useState([]);
@@ -30,14 +31,16 @@ function Reviews() {
         />
       )}
       {review.length > 0 ? (
-        <div>
+        // <div>
+        <DivRotateInDownRight>
           <ReviewStyledList>
             {review?.map(({ id, author, content }) => (
               <ReviewItem key={id} author={author} content={content}></ReviewItem>
             ))}
           </ReviewStyledList>
-        </div>
+        </DivRotateInDownRight>
       ) : (
+        // </div>
         <div>We dont have any reviews on this movie</div>
       )}
     </>

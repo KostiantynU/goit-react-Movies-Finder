@@ -14,6 +14,7 @@ import {
   StyledGoBackBtn,
 } from './MovieCard.styled';
 import { LoadingNotFoundStyled, TiteLoadingNotFound } from 'pages/NotFound/LoadingNotFound.Styled';
+// import DivRotateInDownLeft from 'pages/MovieDetails/MovieDetailsAnimations';
 
 function MovieCard() {
   const [stateObj, setStateObj] = useState({});
@@ -65,6 +66,8 @@ function MovieCard() {
           </StyledDiv>
         </>
       )}
+      {/* <DivRotateInDownLeft>
+        <div style={{ width: '100%', height: '1000px', backgroundColor: 'gray' }}> */}
       <Suspense
         fallback={
           <LoadingNotFoundStyled>
@@ -74,6 +77,8 @@ function MovieCard() {
       >
         <Outlet />
       </Suspense>
+      {/* </div>
+      </DivRotateInDownLeft> */}
     </>
   );
 }

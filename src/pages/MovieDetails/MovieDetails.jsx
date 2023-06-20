@@ -66,19 +66,19 @@ function MovieCard() {
           </StyledDiv>
         </>
       )}
-      {/* <DivRotateInDownLeft>
-        <div style={{ width: '100%', height: '1000px', backgroundColor: 'gray' }}> */}
-      <Suspense
-        fallback={
-          <LoadingNotFoundStyled>
-            <TiteLoadingNotFound>Loading...</TiteLoadingNotFound>
-          </LoadingNotFoundStyled>
-        }
-      >
-        <Outlet />
-      </Suspense>
-      {/* </div>
-      </DivRotateInDownLeft> */}
+      {/* <DivRotateInDownLeft> */}
+      <div style={{ width: '100%', height: '300px' }}>
+        <Suspense
+          fallback={
+            <LoadingNotFoundStyled>
+              <TiteLoadingNotFound>Loading...</TiteLoadingNotFound>
+            </LoadingNotFoundStyled>
+          }
+        >
+          <Outlet />
+        </Suspense>
+      </div>
+      {/* </DivRotateInDownLeft> */}
     </>
   );
 }

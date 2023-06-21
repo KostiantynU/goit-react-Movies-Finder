@@ -14,6 +14,7 @@ import {
   StyledGoBackBtn,
 } from './MovieCard.styled';
 import { LoadingNotFoundStyled, TiteLoadingNotFound } from 'pages/NotFound/LoadingNotFound.Styled';
+import { TestAnimation } from './MovieDetailsAnimations';
 
 function MovieCard() {
   const [stateObj, setStateObj] = useState({});
@@ -65,19 +66,19 @@ function MovieCard() {
           </StyledDiv>
         </>
       )}
-      {/* <DivRotateInDownLeft> */}
-      <div style={{ width: '100%', height: '300px' }}>
-        <Suspense
-          fallback={
-            <LoadingNotFoundStyled>
-              <TiteLoadingNotFound>Loading...</TiteLoadingNotFound>
-            </LoadingNotFoundStyled>
-          }
-        >
-          <Outlet />
-        </Suspense>
-      </div>
-      {/* </DivRotateInDownLeft> */}
+      {/* <div style={{ width: '100%', height: '300px' }}> */}
+      <Suspense
+        fallback={
+          <LoadingNotFoundStyled>
+            <TiteLoadingNotFound>Loading...</TiteLoadingNotFound>
+          </LoadingNotFoundStyled>
+        }
+      >
+        {/* <TestAnimation> */}
+        <Outlet />
+        {/* </TestAnimation> */}
+      </Suspense>
+      {/* </div> */}
     </>
   );
 }

@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { slideInLeft, slideInRight } from 'react-animations';
-import { useSpring, animated } from 'react-spring';
+import { useSpring, animated, useTransition } from 'react-spring';
 
 const slideInLeftAnimation = keyframes`${slideInLeft}`;
 const DivStyledSlideInLeft = styled.div`
@@ -18,27 +18,12 @@ export function DivSlideInRight({ children }) {
   return <DivStyledSlideInRight>{children}</DivStyledSlideInRight>;
 }
 
-export function TestAnimation() {
-  const [spring, api] = useSpring(() => ({
-    from: { x: 0 },
+export function TestAnimation(data) {
+  const [transitions, api] = useTransition(data, () => ({
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
   }));
-  const handleAnim = () => {
-    api.start({
-      from: { x: 0 },
-      to: { x: 100 },
-    });
-  };
-  return (
-    <animated.div
-      onClick={handleAnim}
-      style={{
-        width: '80px',
-        height: '80px',
-        background: '#ff6d6d',
-        borderRadius: '8px',
-        border: '1px solid black',
-        ...spring,
-      }}
-    />
-  );
+
+  return transitions((style, item) => <animated.div style={style}>{item}</animated.div>);
 }

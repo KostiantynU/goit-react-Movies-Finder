@@ -14,7 +14,6 @@ import {
   StyledGoBackBtn,
 } from './MovieCard.styled';
 import { LoadingNotFoundStyled, TiteLoadingNotFound } from 'pages/NotFound/LoadingNotFound.Styled';
-// import DivRotateInDownLeft from 'pages/MovieDetails/MovieDetailsAnimations';
 
 function MovieCard() {
   const [stateObj, setStateObj] = useState({});

@@ -12,8 +12,8 @@ const Reviews = lazy(() => import('./Reviews/Reviews'));
 
 export const App = () => {
   const location = useLocation();
-  console.log(location);
-  const transitions = useTransition(location, location => location.pathname, {
+  console.log(location.pathname);
+  const transitions = useTransition(location, location => location.key, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },

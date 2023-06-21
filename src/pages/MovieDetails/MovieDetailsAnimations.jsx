@@ -19,7 +19,7 @@ export function DivSlideInRight({ children }) {
 }
 
 export function TestAnimation(data) {
-  const [transitions, api] = useTransition(data, () => ({
+  const [transitions] = useTransition(data, () => ({
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },

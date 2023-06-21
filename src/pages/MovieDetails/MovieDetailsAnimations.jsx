@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { slideInLeft, slideInRight } from 'react-animations';
-import { useSpring, animated, useTransition } from 'react-spring';
+import { animated, useTransition } from 'react-spring';
 
 const slideInLeftAnimation = keyframes`${slideInLeft}`;
 const DivStyledSlideInLeft = styled.div`

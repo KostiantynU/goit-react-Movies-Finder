@@ -4,7 +4,7 @@ import { getReview } from 'services/API';
 import { Watch } from 'react-loader-spinner';
 import { ReviewStyledList } from './Review.styled';
 import ReviewItem from 'components/ReviewItem/ReviewItem';
-import { DivSlideInRight } from 'pages/MovieDetails/MovieDetailsAnimations';
+// import { DivSlideInRight } from 'pages/MovieDetails/MovieDetailsAnimations';
 import { TestAnimation } from 'pages/MovieDetails/MovieDetailsAnimations';
 
 function Reviews() {

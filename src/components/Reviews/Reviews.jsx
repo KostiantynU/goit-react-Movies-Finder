@@ -34,13 +34,13 @@ function Reviews() {
       {review.length > 0 ? (
         // <div>
         <TestAnimation>
-          <DivSlideInRight>
-            <ReviewStyledList>
-              {review?.map(({ id, author, content }) => (
-                <ReviewItem key={id} author={author} content={content}></ReviewItem>
-              ))}
-            </ReviewStyledList>
-          </DivSlideInRight>
+          {/* <DivSlideInRight> */}
+          <ReviewStyledList>
+            {review?.map(({ id, author, content }) => (
+              <ReviewItem key={id} author={author} content={content}></ReviewItem>
+            ))}
+          </ReviewStyledList>
+          {/* </DivSlideInRight> */}
         </TestAnimation>
       ) : (
         // </div>

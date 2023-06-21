@@ -14,7 +14,7 @@ import {
   StyledGoBackBtn,
 } from './MovieCard.styled';
 import { LoadingNotFoundStyled, TiteLoadingNotFound } from 'pages/NotFound/LoadingNotFound.Styled';
-import { TestAnimation } from './MovieDetailsAnimations';
+// import { TestAnimation } from './MovieDetailsAnimations';
 
 function MovieCard() {
   const [stateObj, setStateObj] = useState({});

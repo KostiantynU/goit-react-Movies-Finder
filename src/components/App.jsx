@@ -1,5 +1,5 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
-import { lazy, useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { lazy } from 'react';
 import SharedLayout from './SharedLayout/SharedLayout';
 // import { useTransition, animated } from 'react-spring';
 
@@ -33,9 +33,8 @@ export const App = () => {
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<MainPage />} />
         <Route path="moviedetails/:movieId" element={<MovieDetails />}>
-          <>
-            <DynamicContent />
-          </>
+          <Route path="cast" element={<Cast />} />
+          <Route path="reviews" element={<Reviews />} />
         </Route>
         <Route path="movies" element={<MoviesSearch />} />
         <Route path="*" element={<NotFound />} />
@@ -44,29 +43,29 @@ export const App = () => {
   );
 };
 
-function DynamicContent() {
-  const location = useLocation();
-  const [displayLocation, setDisplayLocation] = useState(location);
-  const [transitionStage, setTransitionStage] = useState('slideInLeft');
+// function DynamicContent() {
+//   const location = useLocation();
+//   const [displayLocation, setDisplayLocation] = useState(location);
+//   const [transitionStage, setTransitionStage] = useState('slideInLeft');
 
-  useEffect(() => {
-    if (location !== displayLocation) setTransitionStage('slideInRight');
-  }, [displayLocation, location]);
+//   useEffect(() => {
+//     if (location !== displayLocation) setTransitionStage('slideInRight');
+//   }, [displayLocation, location]);
 
-  return (
-    <div
-      className={`${transitionStage}`}
-      onAnimationEnd={() => {
-        if (transitionStage === 'slideInRigt') {
-          setTransitionStage('slideInLeft');
-          setDisplayLocation(location);
-        }
-      }}
-    >
-      <Routes location={displayLocation}>
-        <Route path="cast" element={<Cast />} />
-        <Route path="reviews" element={<Reviews />} />
-      </Routes>
-    </div>
-  );
-}
+//   return (
+//     <div
+//       className={`${transitionStage}`}
+//       onAnimationEnd={() => {
+//         if (transitionStage === 'slideInRigt') {
+//           setTransitionStage('slideInLeft');
+//           setDisplayLocation(location);
+//         }
+//       }}
+//     >
+//       <Routes location={displayLocation}>
+//         <Route path="cast" element={<Cast />} />
+//         <Route path="reviews" element={<Reviews />} />
+//       </Routes>
+//     </div>
+//   );
+// }

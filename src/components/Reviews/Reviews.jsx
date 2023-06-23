@@ -4,7 +4,7 @@ import { getReview } from 'services/API';
 import { Watch } from 'react-loader-spinner';
 import { ReviewStyledList } from './Review.styled';
 import ReviewItem from 'components/ReviewItem/ReviewItem';
-// import { DivSlideInRight } from 'pages/MovieDetails/MovieDetailsAnimations';
+import { DivSlideInRight } from 'pages/MovieDetails/MovieDetailsAnimations';
 // import { TestAnimation } from 'pages/MovieDetails/MovieDetailsAnimations';
 import { motion } from 'framer-motion';
 
@@ -35,11 +35,13 @@ function Reviews() {
       )}
       {review.length > 0 ? (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-          <ReviewStyledList>
-            {review?.map(({ id, author, content }) => (
-              <ReviewItem key={id} author={author} content={content}></ReviewItem>
-            ))}
-          </ReviewStyledList>
+          <DivSlideInRight>
+            <ReviewStyledList>
+              {review?.map(({ id, author, content }) => (
+                <ReviewItem key={id} author={author} content={content}></ReviewItem>
+              ))}
+            </ReviewStyledList>
+          </DivSlideInRight>
         </motion.div>
       ) : (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>

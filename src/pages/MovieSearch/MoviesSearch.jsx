@@ -17,7 +17,6 @@ function MoviesSearch() {
     searchMovies(filterText).then(response => {
       setTotalResults(response.total_results);
       setSearchArr([...response.results]);
-      console.log(totalResults);
     });
   }, [filterText, totalResults]);
 

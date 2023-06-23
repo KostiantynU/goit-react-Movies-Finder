@@ -71,7 +71,9 @@ function MovieCard() {
       <Suspense
         fallback={
           <LoadingNotFoundStyled>
-            <TiteLoadingNotFound>Loading...</TiteLoadingNotFound>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+              <TiteLoadingNotFound>Loading...</TiteLoadingNotFound>
+            </motion.div>
           </LoadingNotFoundStyled>
         }
       >

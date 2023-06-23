@@ -22,16 +22,18 @@ function Reviews() {
   return (
     <>
       {isLoader && (
-        <Watch
-          height="100"
-          width="100"
-          radius="48"
-          color="rgb(73, 203, 230)"
-          ariaLabel="watch-loading"
-          wrapperStyle={{ justifyContent: 'center' }}
-          wrapperClassName=""
-          visible={true}
-        />
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+          <Watch
+            height="100"
+            width="100"
+            radius="48"
+            color="rgb(73, 203, 230)"
+            ariaLabel="watch-loading"
+            wrapperStyle={{ justifyContent: 'center' }}
+            wrapperClassName=""
+            visible={true}
+          />
+        </motion.div>
       )}
       {review.length > 0 ? (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>

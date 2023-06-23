@@ -45,7 +45,9 @@ function MoviesSearch() {
       {totalResults !== 0 ? (
         <ListOfFilms arrayFilms={searchArr} />
       ) : (
-        <p style={{ margin: '0.5em' }}>There are no results!</p>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+          <p style={{ margin: '0.5em' }}>There are no results!</p>
+        </motion.div>
       )}
     </motion.div>
   );

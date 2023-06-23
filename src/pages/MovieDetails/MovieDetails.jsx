@@ -15,6 +15,7 @@ import {
 } from './MovieCard.styled';
 import { LoadingNotFoundStyled, TiteLoadingNotFound } from 'pages/NotFound/LoadingNotFound.Styled';
 // import { TestAnimation } from './MovieDetailsAnimations';
+import { motion } from 'framer-motion';
 
 function MovieCard() {
   const [stateObj, setStateObj] = useState({});
@@ -36,7 +37,7 @@ function MovieCard() {
       {isLoader ? (
         <WatchSmall />
       ) : (
-        <>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
           <StyledGoBackBtn to={backLinkHref.current}>Go back</StyledGoBackBtn>
           <MovieWrapper>
             {stateObj.poster_path ? (
@@ -64,7 +65,7 @@ function MovieCard() {
               </li>
             </ListLinksStyled>
           </StyledDiv>
-        </>
+        </motion.div>
       )}
       {/* <div style={{ width: '100%', height: '300px' }}> */}
       <Suspense
@@ -74,9 +75,9 @@ function MovieCard() {
           </LoadingNotFoundStyled>
         }
       >
-        {/* <TestAnimation> */}
-        <Outlet />
-        {/* </TestAnimation> */}
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+          <Outlet />
+        </motion.div>
       </Suspense>
       {/* </div> */}
     </>

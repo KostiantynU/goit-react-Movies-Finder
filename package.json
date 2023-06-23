@@ -8,6 +8,7 @@
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
     "formik": "^2.4.1",
+    "framer-motion": "^10.12.16",
     "handy-svg": "^1.0.8",
     "modern-normalize": "^2.0.0",
     "prop-types": "^15.8.1",

@@ -4,6 +4,7 @@ import Searchbar from 'components/Searchbar/Searchbar';
 import ListOfFilms from 'components/ListOfFilms/ListOfFilms';
 import { searchMovies } from 'services/API';
 import { MainTitle } from './MoviesSearch.styled';
+import { motion } from 'framer-motion';
 
 function MoviesSearch() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -39,7 +40,7 @@ function MoviesSearch() {
   // );
 
   return (
-    <div>
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
       <MainTitle>Movie search</MainTitle>
       <Searchbar handleSubmit={handleSubmit} value={filterText} />
       {totalResults !== 0 ? (
@@ -47,7 +48,7 @@ function MoviesSearch() {
       ) : (
         <p style={{ margin: '0.5em' }}>There are no results!</p>
       )}
-    </div>
+    </motion.div>
   );
 }
 export default MoviesSearch;

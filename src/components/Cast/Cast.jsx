@@ -4,7 +4,9 @@ import { getCredits } from 'services/API';
 import { Watch } from 'react-loader-spinner';
 import CastListItem from 'components/CastListItem/CastListItem';
 import { CastList } from './Cast.styled';
-import { DivSlideInLeft } from 'pages/MovieDetails/MovieDetailsAnimations';
+import { motion } from 'framer-motion';
+// import { DivSlideInLeft } from 'pages/MovieDetails/MovieDetailsAnimations';
+// import { AnimatePresence, motion } from 'framer-motion';
 
 function Cast() {
   const [creditArr, setCreditArr] = useState();
@@ -32,7 +34,9 @@ function Cast() {
         />
       )}
       {creditArr?.length > 0 ? (
-        <DivSlideInLeft>
+        // <DivSlideInLeft>
+        // <AnimatePresence>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
           <CastList>
             {creditArr.map(
               ({ credit_id, character, name: characterName, profile_path: charachterPhoto }) => (
@@ -45,9 +49,14 @@ function Cast() {
               )
             )}
           </CastList>
-        </DivSlideInLeft>
+        </motion.div>
       ) : (
-        <div>Information does not exists.</div>
+        // </motion.div>
+        // </AnimatePresence>
+        // {/* </DivSlideInLeft> */}
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+          <div>Information does not exists.</div>
+        </motion.div>
       )}
     </>
   );

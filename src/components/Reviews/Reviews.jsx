@@ -6,11 +6,13 @@ import { ReviewStyledList } from './Review.styled';
 import ReviewItem from 'components/ReviewItem/ReviewItem';
 // import { DivSlideInRight } from 'pages/MovieDetails/MovieDetailsAnimations';
 // import { TestAnimation } from 'pages/MovieDetails/MovieDetailsAnimations';
+import { motion } from 'framer-motion';
 
 function Reviews() {
   const [review, setReview] = useState([]);
   const [isLoader, setIsLoader] = useState(false);
   const { movieId } = useParams();
+
   useEffect(() => {
     setIsLoader(true);
     getReview(movieId)
@@ -32,13 +34,17 @@ function Reviews() {
         />
       )}
       {review.length > 0 ? (
-        <ReviewStyledList>
-          {review?.map(({ id, author, content }) => (
-            <ReviewItem key={id} author={author} content={content}></ReviewItem>
-          ))}
-        </ReviewStyledList>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+          <ReviewStyledList>
+            {review?.map(({ id, author, content }) => (
+              <ReviewItem key={id} author={author} content={content}></ReviewItem>
+            ))}
+          </ReviewStyledList>
+        </motion.div>
       ) : (
-        <div>We dont have any reviews on this movie</div>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+          <div>We dont have any reviews on this movie</div>
+        </motion.div>
       )}
     </>
   );

@@ -34,39 +34,37 @@ function MovieCard() {
 
   return (
     <>
-      {isLoader ? (
-        <WatchSmall />
-      ) : (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-          <StyledGoBackBtn to={backLinkHref.current}>Go back</StyledGoBackBtn>
-          <MovieWrapper>
-            {stateObj.poster_path ? (
-              <img src={`${IMAGE_PATH}${stateObj.poster_path}`} alt="" />
-            ) : (
-              <WatchBig />
-            )}
-            <DescriptionWrapper>
-              <h2>{stateObj.original_title}</h2>
-              <p>User Score: {Math.ceil(stateObj.vote_average * 10) + '%'}</p>
-              <Overview>Overview</Overview>
-              <p>{stateObj.overview}</p>
-              <Genres>Genres</Genres>
-              <p>{stateObj.genres?.map(el => `${el.name}${' '} `)}</p>
-            </DescriptionWrapper>
-          </MovieWrapper>
-          <StyledDiv>
-            Additional information
-            <ListLinksStyled>
-              <li>
-                <StyledLink to="cast">Cast</StyledLink>
-              </li>
-              <li>
-                <StyledLink to="reviews">Reviews</StyledLink>
-              </li>
-            </ListLinksStyled>
-          </StyledDiv>
-        </motion.div>
-      )}
+      {isLoader ?? <WatchSmall />}
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+        <StyledGoBackBtn to={backLinkHref.current}>Go back</StyledGoBackBtn>
+        <MovieWrapper>
+          {stateObj.poster_path ? (
+            <img src={`${IMAGE_PATH}${stateObj.poster_path}`} alt="" />
+          ) : (
+            <WatchBig />
+          )}
+          <DescriptionWrapper>
+            <h2>{stateObj.original_title}</h2>
+            <p>User Score: {Math.ceil(stateObj.vote_average * 10) + '%'}</p>
+            <Overview>Overview</Overview>
+            <p>{stateObj.overview}</p>
+            <Genres>Genres</Genres>
+            <p>{stateObj.genres?.map(el => `${el.name}${' '} `)}</p>
+          </DescriptionWrapper>
+        </MovieWrapper>
+        <StyledDiv>
+          Additional information
+          <ListLinksStyled>
+            <li>
+              <StyledLink to="cast">Cast</StyledLink>
+            </li>
+            <li>
+              <StyledLink to="reviews">Reviews</StyledLink>
+            </li>
+          </ListLinksStyled>
+        </StyledDiv>
+      </motion.div>
+
       {/* <div style={{ width: '100%', height: '300px' }}> */}
       <Suspense
         fallback={
